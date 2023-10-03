@@ -50,9 +50,10 @@ function agregarCarrito(e, productos) {
        let fila = document.createElement("tr");
        fila.innerHTML = `<td><img src="${producto.img}"></td>
                          <td><p>${producto.nombre}</p></td>
-                         <td>${producto.precio}</td>
+                         <td><h6>${producto.precio}</h6></td>
                          <td><button class="btn btnBorrar btn-danger">Borrar</button></td>`;
         tabla.append(fila);
+        
   });
   }
 
@@ -62,7 +63,7 @@ function agregarCarrito(e, productos) {
    }
 
   function borrarProducto(e) {
-    
+
     e.target.parentNode.parentNode.remove();
     
     }

@@ -141,6 +141,16 @@ border-radius: 15px;
  color: #888;
  font-size: 20px;
 }
+#carro h6 {
+
+  display: inline;
+  margin-left: 25px;
+  margin-right: 5px;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  font-size: 15px;
+}
 
 #carro img {
 
