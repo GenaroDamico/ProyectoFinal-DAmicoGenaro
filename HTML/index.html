@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script defer src="/Javascript/script.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>PreEntrega-3</title>
   </head>
   <body>
-    <h1>Bienvenidos a Car Detail AUTO SPA</h1>
-
-    <article></article>
-
-         <div><h3>Abrillantado</h3>
-        <img src="" alt=""></div>
-         <div><h3>Tratamiento Ceramico</h3>
-        <img src="" alt=""></div>
-         <div><h3>Tratamiento Acrilico</h3>
-        <img src="" alt=""></div>
-         <div><h3>Lavado Premium</h3>
-        <img src="" alt=""></div>
-         <div><h3>Lavado Interior</h3>
-        <img src="" alt=""></div>
-         <div><h3>Lavado Normal</h3>
-        <img src="" alt=""></div>
-
-    </article>
 
 
-    <button class="botonTratamiento" data-index="0">Abrillantado</button>
-    <button class="botonTratamiento" data-index="1">Acrilico</button>
-    <button class="botonTratamiento" data-index="2">Ceramico</button>
+    <header><h1>Bienvenidos a Car Detail AUTO SPA</h1>
+    <ul>
+      <li><button>Inicio</button></li>
+      <li><button>Contacto</button></li>
+      <li><button>Carro</button></li>
+    </ul>
+    </header>
 
-    <div>
-      <p>Seleccione el metodo de pago:</p>
+  
+    
+<main>
+  <div id="eco"></div>
+  <div id="carro">
+    <p>Cantidad</p>
+    <p>Producto</p>
+    <p>Total</p>
 
-      <button class="metodoPago" value="1">Efectivo</button>
-      <button class="metodoPago" value="3">3 cuotas</button>
-      <button class="metodoPago" value="6">6 cuotas</button>
-      <button class="metodoPago" value="12">12 cuotas</button> <br />
-    </div>
+    <tbody id="carro">
 
-    <p>Subtotal: $<span id="subtotal">0</span></p>
-    <p>Cuota seleccionada: <span id="cuotaSeleccionada">0</span></p>
-    <p>Total: $<span id="total">0</span></p>
+    </tbody>
 
-    <button id="ImpTicket">CLICK AQUI PARA IMPRIMIR TICKET</button>
+   </div>
+  
 
-    <script src="/Javascript/script.js"></script>
+</main>
+  
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
   </body>
 </html>

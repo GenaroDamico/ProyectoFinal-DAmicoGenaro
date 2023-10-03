@@ -1,87 +1,76 @@
+const url = "/Productos.json";
+fetch(url)
+.then(res => res.json())
+.then(data => mostrarProductos(data));
 
 
-let tratamientos = [
-    { nombre: "Abrillantado", precio: 20000 },
-    { nombre: "Acrilico", precio: 32000 },
-    { nombre: "Ceramico", precio: 52000 }
-];
+const contenedorProd = document.querySelector('#eco')
+const carrito = [];
 
-
-function BuscarTratamientos(e){
-
-let nombreTratamiento = e.target.textContent;
-let tratamientoSeleccionado = tratamientos.find(tratamiento => tratamiento.nombre === nombreTratamiento);
-
-    if (tratamientoSeleccionado) {
-         precioTratamiento = tratamientoSeleccionado.precio;
-    } else {
+function mostrarProductos(productos){
   
-    precioTratamiento = 0;
-    }
+   productos.forEach( prod => {
+      
+      let card = document.createElement('div');
 
-calcularCuotaTratamiento();
-
-} 
-
-//total = (subtotal * recargo) / cuotasSeleccionadas
-
-function calcularCuotaTratamiento() {
-
-  let subtotal = precioTratamiento;
-  let total;
-
-  if (cuotasSeleccionadas == 3) {
-    total = subtotal + (subtotal * 0.2);
-  } else if (cuotasSeleccionadas == 6) {
-    total = subtotal + (subtotal * 0.5);
-  } else if (cuotasSeleccionadas == 12) {
-    total = subtotal + (subtotal * 0.8);
-  } else {
-    total = subtotal / cuotasSeleccionadas;
-  }
-
-
+      card.innerHTML = `<h3>${prod.nombre}</h3>
+                        <img src="${prod.img}"/>
+                        <h4>Precio: $${prod.precio}</h4>
+                        <button class="btnAgregar" id="${prod.id}">Agregar</button>`
+      contenedorProd.appendChild(card)
   
-    document.getElementById("subtotal").textContent = subtotal;
-    document.getElementById("cuotaSeleccionada").textContent = cuotasSeleccionadas;
-    document.getElementById("total").textContent = total;
-
-
-  }
-  
-  // ---- VARIABLES ---- //
-  let cuotasSeleccionadas = 0;
-  let precioTratamiento = 0;
-  
-  console.log("Bienvendios a CarDetaling");
-  
-// DOM
-  let btnTratamiento = document.querySelectorAll(".botonTratamiento");
-  let btnPago = document.querySelectorAll(".metodoPago");
-  console.log(btnTratamiento);
-  console.log(btnPago);
-
-
-
-  //EVENTOS
-  for (let boton of btnTratamiento) {
-    boton.addEventListener("click", BuscarTratamientos);
-}
-
-
-for( let boton of btnPago ){
-
-  boton.addEventListener("click" , () => {
-  cuotasSeleccionadas = parseInt(boton.value);
-  calcularCuotaTratamiento();
 });
-}
- 
 
-document.getElementById("ImpTicket").addEventListener("click", () => {
-  if (precioTratamiento > 0) {
-      alert(`Ticket de compra:\nTratamiento: ${precioTratamiento}\nCuotas: ${cuotasSeleccionadas}\nTotal: $${document.getElementById("total").textContent}`);
-  } else {
-      alert("Seleccione un tratamiento antes de imprimir el ticket.");
+let btnAgregarCarrito = document.querySelectorAll( ".btnAgregar" );
+
+for( let boton of btnAgregarCarrito) {
+
+   boton.addEventListener("click", (e)=> agregarCarrito(e, productos))
   }
- });
+}
+
+
+
+function agregarCarrito(e, productos) { 
+
+   const productoElegido = productos.find ( el => el.id === parseInt(e.target.id));
+   if (productoElegido) {
+    carrito.push(productoElegido);
+    mostrarCarrito();
+    Toastify({text:`Producto Agregado: ${productoElegido}`});
+  }
+  
+  
+  function mostrarCarrito() {
+   let tabla = document.getElementById("carro");
+   tabla.innerHTML = "";
+
+  carrito.forEach( producto => {
+
+       let fila = document.createElement("tr");
+       fila.innerHTML = `<td><img src="${producto.img}"></td>
+                         <td><p>${producto.nombre}</p></td>
+                         <td>${producto.precio}</td>
+                         <td><button class="btn btnBorrar btn-danger">Borrar</button></td>`;
+        tabla.append(fila);
+  });
+  }
+
+   let btnBorrar = document.querySelectorAll(".btnBorrar");
+   for (let btn of btnBorrar){
+    btn.addEventListener("click", borrarProducto );
+   }
+
+  function borrarProducto(e) {
+    
+    e.target.parentNode.parentNode.remove();
+    
+    }
+  
+  
+  Toastify({
+    text:`Producto Agregado: ${productoElegido.nombre}`,
+  
+  
+  }).showToast(); 
+}

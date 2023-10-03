@@ -1,0 +1,45 @@
+
+
+[
+{
+"id": 1,
+"nombre": "Abrillantado",
+"precio": 35000,
+"img": "/img/Abrillantado.jpg"
+},
+
+{
+    "id": 2,
+    "nombre": "Tratamiento Acrilico",
+    "precio": 42000,
+    "img": "/img/Acrilico.jpg"
+},
+
+{
+    "id": 3,
+    "nombre": "Tratamiento Ceramico",
+    "precio": 52000,
+    "img": "/img/Ceramico.jpg"
+},
+
+{
+    "id": 4,
+    "nombre": "Lavado Premium",
+    "precio": 10500,
+    "img": "/img/Premium.jpg"
+},
+
+{
+    "id": 5,
+    "nombre": "Lavado Normal",
+    "precio": 5000,
+    "img": "/img/Lavado normal.jpg"
+},
+
+{
+    "id": 6,
+    "nombre": "Lavado Interior",
+    "precio": 4000,
+    "img": "/img/Interior.jpg"
+}
+]
