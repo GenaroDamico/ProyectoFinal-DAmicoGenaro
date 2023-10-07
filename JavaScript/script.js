@@ -5,7 +5,8 @@ fetch(url)
 
 
 const contenedorProd = document.querySelector('#eco')
-const carrito = [];
+
+let carrito = [];
 
 function mostrarProductos(productos){
   
@@ -37,7 +38,9 @@ function agregarCarrito(e, productos) {
    if (productoElegido) {
     carrito.push(productoElegido);
     mostrarCarrito();
-    Toastify({text:`Producto Agregado: ${productoElegido}`});
+    Toastify({
+      text: `Producto Agregado: ${productoElegido.nombre}`,
+    }).showToast();
   }
   
   
@@ -59,19 +62,24 @@ function agregarCarrito(e, productos) {
 
    let btnBorrar = document.querySelectorAll(".btnBorrar");
    for (let btn of btnBorrar){
-    btn.addEventListener("click", borrarProducto );
-   }
+    btn.addEventListener("click", borrarProducto);
+     }
 
-  function borrarProducto(e) {
-
-    e.target.parentNode.parentNode.remove();
-    
-    }
+     function borrarProducto(e){
+  
+      let borrar = e.target.parentNode.parentNode;
+      let productoEliminar = borrar.querySelector("p").innerText;
+       
+      borrar.remove();
+  
+      function eliminarProductoCarrito( producto ){
+          return producto.nombre != productoEliminar
+      }
+  
+      let resultadoFilter = carrito.filter( eliminarProductoCarrito );
+      carrito = resultadoFilter;
+  
+  }
   
   
-  Toastify({
-    text:`Producto Agregado: ${productoElegido.nombre}`,
-  
-  
-  }).showToast(); 
-}
+  }
